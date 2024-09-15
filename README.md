@@ -1,6 +1,6 @@
 # Parallelismessness
 
-Providing examples about parallelism, processes, threads, concurrency, and related topics.
+Providing examples about parallelism, processes, threads, concurrency, and related topics. I started with `Java`, and soon I will also add `C++` and `Rust`.
 
 ## Thread Safety and Race Conditions
 
@@ -64,3 +64,11 @@ void incAtomicCounter() {
 ```bash
 Final Counter: 20000
 ```
+
+## Services Initialization
+
+A common scenario when using multiple threads is that you need to wait for some services to initialize before proceeding. For that `CountDownLatch` could be used, to ensure a condition is met before proceeding. In `InOrder.java` we need certain order of execution when we are running multiple threads.
+
+## Executing Threads Alternately
+
+One approach to execute two threads in an alternating order is to use `Semaphore` where each thread acquires its own semaphore and releases the semaphore for the other thread, like in 
