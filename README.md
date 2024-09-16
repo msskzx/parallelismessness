@@ -2,9 +2,33 @@
 
 Providing examples about parallelism, processes, threads, concurrency, and related topics. I started with `Java`, and soon I will also add `C++` and `Rust`.
 
+## Outline
+
+- Thread Safety and Race Conditions
+- Services Initialization
+- Executing Threads Alternately
+- Examples on Thread Safety and Race Conditions
+
 ## Thread Safety and Race Conditions
 
 A race condition occurs when multiple threads or processes try to change shared resource simultaneously which can lead to undesirable results.
+
+- `Counter.java` has some examples on how race conditions happen and why thread safety is important.
+
+## Services Initialization
+
+A common scenario when using multiple threads is that you need to wait for some services to initialize before proceeding. For that `CountDownLatch` could be used, to ensure a condition is met before proceeding.
+
+- `InOrder.java` we need certain order of execution when we are running multiple threads.
+
+## Executing Threads Alternately
+
+One approach to execute two threads in an alternating order is to use `Semaphore` where each thread acquires its own semaphore and releases the semaphore for the other thread.
+
+- `PrintAlternately.java` has an example alternating between two threads.
+- `ZeroEvenOdd.java` has an example alternating between three threads.
+
+## Examples on Thread Safety and Race Conditions
 
 ### Lock
 
@@ -64,11 +88,3 @@ void incAtomicCounter() {
 ```bash
 Final Counter: 20000
 ```
-
-## Services Initialization
-
-A common scenario when using multiple threads is that you need to wait for some services to initialize before proceeding. For that `CountDownLatch` could be used, to ensure a condition is met before proceeding. In `InOrder.java` we need certain order of execution when we are running multiple threads.
-
-## Executing Threads Alternately
-
-One approach to execute two threads in an alternating order is to use `Semaphore` where each thread acquires its own semaphore and releases the semaphore for the other thread, like in 
